@@ -3,899 +3,536 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taulia | Powered by HSBC</title>
+<title>SAP Taulia</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; background: #f4f5f7; color: #2c3e50; font-size: 14px; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:14px;background:#c8c8c8;color:#333;}
 
-/* ---- TOP HEADER BAR ---- */
-.top-bar {
-  background: #1a2b45;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  justify-content: space-between;
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-}
-.top-bar-left { display: flex; align-items: center; gap: 12px; }
-.sap-logo {
-  background: #fff;
-  padding: 3px 6px;
-  border-radius: 3px;
-  font-weight: 900;
-  font-size: 13px;
-  color: #0070d2;
-  letter-spacing: -0.5px;
-  line-height: 1;
-}
-.sap-logo span { color: #1a2b45; }
-.taulia-brand {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.hsbc-cobrand {
-  color: #ccd6e0;
-  font-size: 11px;
-  font-weight: 400;
-  padding-left: 12px;
-  border-left: 1px solid #3a4e65;
-  margin-left: 4px;
-}
-.hsbc-red { color: #db0011; font-weight: 700; }
-.top-bar-right { display: flex; align-items: center; gap: 16px; }
-.top-bar-right svg { color: #aec6d8; cursor: pointer; }
-.entity-badge {
-  background: #2c4a6b;
-  color: #ccd6e0;
-  padding: 4px 12px;
-  border-radius: 4px;
-  font-size: 12px;
-  cursor: pointer;
-}
+/* ── TOP NAVBAR ── */
+.top-nav{background:#1e2d3d;height:46px;display:flex;align-items:center;padding:0 16px;justify-content:space-between;position:fixed;top:0;left:0;right:0;z-index:1000;}
+.top-nav-left{display:flex;align-items:center;gap:10px;}
+.sap-box{background:#0070d2;color:#fff;font-size:12px;font-weight:800;padding:3px 6px;border-radius:2px;letter-spacing:0px;line-height:1.4;}
+.taulia-word{color:#fff;font-size:17px;font-weight:400;letter-spacing:0.2px;}
+.top-nav-right{display:flex;align-items:center;gap:18px;}
+.top-nav-right svg{color:#9ab0c4;cursor:pointer;width:20px;height:20px;}
 
-/* ---- SUB NAV ---- */
-.sub-nav {
-  background: #fff;
-  border-bottom: 1px solid #e0e6ed;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  gap: 0;
-  margin-top: 48px;
-  position: sticky;
-  top: 48px;
-  z-index: 900;
-}
-.sub-nav-item {
-  padding: 0 16px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  color: #5a6a7a;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.15s;
-}
-.sub-nav-item:hover { color: #1a7ec8; }
-.sub-nav-item.active { color: #1a7ec8; border-bottom-color: #1a7ec8; font-weight: 500; }
+/* ── SECOND NAV ── */
+.sec-nav{background:#d4d4d4;height:44px;display:flex;align-items:stretch;padding:0 16px;gap:0;margin-top:46px;position:sticky;top:46px;z-index:900;border-bottom:1px solid #b8b8b8;}
+.sec-nav-item{padding:0 18px;display:flex;align-items:center;font-size:13px;color:#333;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap;gap:4px;}
+.sec-nav-item:hover{color:#1a73c8;}
+.sec-nav-item.active{color:#1a73c8;border-bottom-color:#1a73c8;font-weight:400;}
 
-/* ---- MAIN CONTENT ---- */
-.main { padding: 24px 28px; min-height: calc(100vh - 92px); }
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.page-title { font-size: 22px; font-weight: 600; color: #1a2b45; }
-.page-subtitle { font-size: 13px; color: #7a8a9a; margin-top: 2px; }
+/* ── PAGE HEADER ── */
+.page-hdr{background:#d4d4d4;padding:10px 20px 0 20px;display:flex;align-items:center;gap:8px;}
+.page-hdr-title{font-size:20px;font-weight:400;color:#333;}
+.page-hdr-arrow{color:#555;font-size:14px;cursor:pointer;}
 
-/* ---- STATS ROW ---- */
-.stats-row { display: flex; gap: 16px; margin-bottom: 24px; }
-.stat-card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 16px 20px;
-  flex: 1;
-  border: 1px solid #e8edf2;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.stat-label { font-size: 11px; color: #8a9aaa; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-.stat-value { font-size: 26px; font-weight: 700; color: #1a2b45; }
-.stat-sub { font-size: 11px; color: #7a8a9a; margin-top: 3px; }
+/* ── OUTER WRAPPER (the white content box) ── */
+.outer-wrap{margin:0 16px 20px 16px;background:#fff;border:1px solid #bbb;box-shadow:0 1px 3px rgba(0,0,0,0.08);}
 
-/* ---- SECTION TITLE ---- */
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-.section-title { font-size: 15px; font-weight: 600; color: #1a2b45; }
-.filter-bar {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.filter-btn {
-  padding: 6px 14px;
-  border: 1px solid #d0dae4;
-  border-radius: 6px;
-  background: #fff;
-  font-size: 12px;
-  color: #5a6a7a;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.filter-btn.active { background: #e8f2fb; border-color: #1a7ec8; color: #1a7ec8; }
-.btn-primary {
-  padding: 8px 18px;
-  background: #1a7ec8;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.btn-primary:hover { background: #1567a8; }
-.btn-primary:disabled { background: #9ab4cb; cursor: not-allowed; }
-.btn-secondary {
-  padding: 8px 16px;
-  background: #fff;
-  color: #1a7ec8;
-  border: 1px solid #1a7ec8;
-  border-radius: 6px;
-  font-size: 13px;
-  cursor: pointer;
-}
+/* ── SUPPLIER PORTAL INNER NAV ── */
+.supplier-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #e0e0e0;background:#fff;}
+.sap-taulia-logo{display:flex;align-items:center;gap:0;}
+.logo-sap-part{display:flex;align-items:center;}
+.logo-sap-box{background:#0070d2;color:#fff;font-size:11px;font-weight:800;padding:3px 6px;border-radius:2px;line-height:1.4;}
+.logo-triangle{width:0;height:0;border-top:18px solid transparent;border-bottom:18px solid transparent;border-left:14px solid #1a5fb4;margin:0;}
+.logo-taulia-text{color:#1a5fb4;font-size:22px;font-weight:700;letter-spacing:-0.3px;margin-left:4px;}
+.supplier-nav{display:flex;gap:0;align-items:center;}
+.supplier-nav a{font-size:13px;color:#333;text-decoration:none;padding:0 12px;cursor:pointer;}
+.supplier-nav a:hover{color:#1a73c8;}
 
-/* ---- INVOICE CARD ---- */
-.invoice-card {
-  background: #fff;
-  border-radius: 10px;
-  border: 1px solid #e0e8f0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  margin-bottom: 12px;
-  overflow: hidden;
-  transition: box-shadow 0.2s, border-color 0.2s;
-  cursor: pointer;
-}
-.invoice-card:hover { box-shadow: 0 4px 16px rgba(26,126,200,0.12); border-color: #b8d4ec; }
-.invoice-card.expanded { border-color: #1a7ec8; box-shadow: 0 4px 20px rgba(26,126,200,0.15); }
-.invoice-card.settled { border-color: #27ae60; cursor: default; }
-.invoice-card-header {
-  padding: 18px 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.invoice-card-left { display: flex; align-items: center; gap: 16px; flex: 1; }
-.supplier-icon {
-  width: 44px; height: 44px;
-  background: linear-gradient(135deg, #1a7ec8, #0d5fa0);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-weight: 700; font-size: 16px;
-  flex-shrink: 0;
-}
-.invoice-info h3 { font-size: 15px; font-weight: 600; color: #1a2b45; margin-bottom: 3px; }
-.invoice-info .invoice-ref { font-size: 12px; color: #7a8a9a; }
-.invoice-card-meta { display: flex; gap: 20px; align-items: center; }
-.meta-item { text-align: right; }
-.meta-label { font-size: 10px; color: #9aaabb; text-transform: uppercase; letter-spacing: 0.4px; }
-.meta-value { font-size: 14px; font-weight: 600; color: #1a2b45; margin-top: 1px; }
-.status-badge {
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-}
-.status-ready { background: #e8f4fd; color: #1a7ec8; border: 1px solid #b8d4ec; }
-.status-settled { background: #e8f7ee; color: #27ae60; border: 1px solid #a8ddb8; }
-.status-processing { background: #fff8e8; color: #e67e22; border: 1px solid #f5d78a; }
-.chevron { transition: transform 0.2s; color: #9aaabb; }
-.chevron.open { transform: rotate(180deg); }
+/* ── INVOICES PAGE ── */
+.inv-page{padding:16px 20px;}
+.inv-title{font-size:18px;font-weight:700;color:#222;margin-bottom:12px;}
 
-/* ---- EXPANDED INVOICE DETAIL ---- */
-.invoice-detail {
-  display: none;
-  border-top: 1px solid #e8edf2;
-  padding: 20px 22px;
-  background: #fafcfe;
-}
-.invoice-detail.show { display: block; }
-.detail-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-.detail-field label {
-  font-size: 10px;
-  color: #9aaabb;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  display: block;
-  margin-bottom: 4px;
-}
-.detail-field .field-value {
-  font-size: 13px;
-  font-weight: 500;
-  color: #1a2b45;
-}
-.check-icon { color: #27ae60; margin-right: 4px; }
-.line-items-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-.line-items-table th {
-  background: #f0f4f8;
-  text-align: left;
-  padding: 10px 14px;
-  font-size: 11px;
-  color: #7a8a9a;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  font-weight: 600;
-}
-.line-items-table td {
-  padding: 12px 14px;
-  border-bottom: 1px solid #eef2f6;
-  font-size: 13px;
-  color: #2c3e50;
-}
-.line-items-table tr:last-child td { border-bottom: none; }
-.amount-cell { text-align: right; font-weight: 600; color: #1a2b45; }
-.action-row { display: flex; gap: 12px; align-items: center; padding-top: 16px; border-top: 1px solid #e8edf2; }
-</style>
-/* ---- MODAL OVERLAY ---- */
-.modal-overlay {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(15,30,50,0.55);
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-}
-.modal-overlay.show { display: flex; }
-.modal-box {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-  width: 520px;
-  overflow: hidden;
-  animation: modalIn 0.2s ease-out;
-}
-@keyframes modalIn {
-  from { opacity: 0; transform: scale(0.96) translateY(-10px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-.modal-header {
-  background: #1a2b45;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.modal-header h2 { color: #fff; font-size: 16px; font-weight: 600; }
-.modal-header .modal-close {
-  color: #7a9ab8;
-  cursor: pointer;
-  font-size: 20px;
-  line-height: 1;
-  background: none;
-  border: none;
-}
-.modal-body { padding: 24px; }
-.modal-section-title { font-size: 12px; color: #7a8a9a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; font-weight: 600; }
-.payment-method-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.payment-option {
-  border: 2px solid #e0e8f0;
-  border-radius: 8px;
-  padding: 14px 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  transition: all 0.15s;
-}
-.payment-option:hover { border-color: #1a7ec8; background: #f5f9fd; }
-.payment-option.selected { border-color: #1a7ec8; background: #e8f2fb; }
-.payment-icon {
-  width: 40px; height: 40px;
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-.payment-icon.vcn { background: linear-gradient(135deg, #1a7ec8, #0d5fa0); color: #fff; }
-.payment-icon.ach { background: #e8f7ee; }
-.payment-icon.wire { background: #fff8e8; }
-.payment-option-info h4 { font-size: 13px; font-weight: 600; color: #1a2b45; }
-.payment-option-info p { font-size: 12px; color: #7a8a9a; margin-top: 2px; }
-.recommended-badge {
-  margin-left: auto;
-  background: #e8f4fd;
-  color: #1a7ec8;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-}
-.modal-footer {
-  padding: 16px 24px;
-  background: #f8fafc;
-  border-top: 1px solid #e8edf2;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
+/* ── SEARCH PANEL ── */
+.search-panel{border:1px solid #ccc;padding:16px;margin-bottom:0;background:#fff;}
+.search-panel-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.search-panel-lbl{font-size:13px;font-weight:700;color:#222;}
+.adv-search-link{font-size:12px;color:#1a73c8;text-decoration:underline;cursor:pointer;}
+.form-row{display:flex;align-items:center;margin-bottom:10px;gap:8px;}
+.form-label{font-size:13px;font-weight:700;color:#333;width:130px;flex-shrink:0;}
+.form-input{height:30px;border:1px solid #aaa;padding:0 8px;font-size:13px;color:#333;background:#fff;width:200px;}
+.form-select{height:30px;border:1px solid #aaa;padding:0 6px;font-size:13px;color:#333;background:#fff;width:200px;cursor:pointer;}
+.form-help{color:#999;font-size:16px;cursor:pointer;margin-left:4px;}
+.search-icon{color:#999;font-size:14px;cursor:pointer;margin-left:4px;}
+.radio-row{display:flex;gap:16px;align-items:center;}
+.radio-row label{display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer;}
+.search-btn-row{display:flex;justify-content:flex-end;margin-top:10px;}
+.btn-search{background:#3a7d44;color:#fff;border:none;padding:7px 22px;font-size:13px;cursor:pointer;font-weight:400;}
+.btn-search:hover{background:#2e6336;}
 
-/* ---- VCN CARD DISPLAY ---- */
-.vcn-card-visual {
-  background: linear-gradient(135deg, #1a2b45 0%, #1a7ec8 100%);
-  border-radius: 12px;
-  padding: 20px;
-  color: #fff;
-  margin-bottom: 16px;
-  position: relative;
-  overflow: hidden;
-}
-.vcn-card-visual::before {
-  content: '';
-  position: absolute;
-  top: -30px; right: -30px;
-  width: 120px; height: 120px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-}
-.vcn-card-visual::after {
-  content: '';
-  position: absolute;
-  bottom: -20px; left: 40px;
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.04);
-}
-.vcn-chip { margin-bottom: 16px; }
-.vcn-chip-inner {
-  width: 32px; height: 24px;
-  background: linear-gradient(135deg, #d4af37, #c8980a);
-  border-radius: 4px;
-}
-.vcn-number { font-size: 13px; letter-spacing: 2px; font-family: monospace; margin-bottom: 12px; opacity: 0.9; }
-.vcn-details { display: flex; justify-content: space-between; align-items: flex-end; }
-.vcn-field label { font-size: 9px; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px; }
-.vcn-field .vcn-val { font-size: 13px; font-weight: 600; margin-top: 2px; }
-.vcn-brand { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
-.vcn-badge { font-size: 9px; opacity: 0.7; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-.vcn-info-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.vcn-info-item label { font-size: 10px; color: #9aaabb; text-transform: uppercase; letter-spacing: 0.4px; }
-.vcn-info-item .vcn-info-val { font-size: 13px; font-weight: 600; color: #1a2b45; margin-top: 2px; }
+/* ── RESULTS BAR ── */
+.results-bar{background:#3a7d44;color:#fff;padding:8px 14px;display:flex;justify-content:space-between;align-items:center;margin-top:16px;}
+.results-bar-left{font-size:13px;}
+.results-bar-right{display:flex;gap:16px;align-items:center;}
+.results-bar-right a{color:#fff;font-size:13px;text-decoration:none;display:flex;align-items:center;gap:5px;cursor:pointer;}
 
-/* ---- CONFIRMATION BANNER ---- */
-.confirmation-banner {
-  display: none;
-  background: linear-gradient(135deg, #e8f7ee, #d4f0e0);
-  border: 1px solid #27ae60;
-  border-radius: 10px;
-  padding: 20px 24px;
-  margin-bottom: 20px;
-  animation: slideIn 0.3s ease-out;
-}
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.confirmation-banner.show { display: flex; align-items: flex-start; gap: 16px; }
-.conf-icon { font-size: 28px; flex-shrink: 0; }
-.conf-title { font-size: 16px; font-weight: 700; color: #1a7a3a; margin-bottom: 4px; }
-.conf-ref { font-size: 13px; color: #2c7a4a; }
-.conf-ref strong { font-weight: 700; }
-.conf-meta { display: flex; gap: 20px; margin-top: 10px; }
-.conf-meta-item { font-size: 12px; color: #3a8a5a; }
-.conf-meta-item strong { font-weight: 600; }
-.toast {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: #1a2b45;
-  color: #fff;
-  padding: 14px 20px;
-  border-radius: 8px;
-  font-size: 13px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  z-index: 9999;
-  display: none;
-  animation: toastIn 0.25s ease-out;
-}
-@keyframes toastIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.toast.show { display: block; }
-.empty-state { text-align: center; padding: 60px 20px; color: #9aaabb; }
-.empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; }
-.breadcrumb { font-size: 12px; color: #9aaabb; margin-bottom: 20px; }
-.breadcrumb a { color: #1a7ec8; text-decoration: none; cursor: pointer; }
-.breadcrumb a:hover { text-decoration: underline; }
+/* ── DATA TABLE ── */
+.data-table{width:100%;border-collapse:collapse;background:#fff;}
+.data-table thead tr{border-bottom:1px solid #ddd;}
+.data-table th{padding:9px 12px;text-align:left;font-size:12px;font-weight:400;color:#1a73c8;text-decoration:underline;cursor:pointer;white-space:nowrap;}
+.data-table th.no-link{color:#555;text-decoration:none;cursor:default;}
+.data-table td{padding:8px 12px;font-size:13px;color:#333;border-bottom:1px solid #e8e8e8;vertical-align:middle;}
+.data-table tr:hover td{background:#f5f8ff;}
+.data-table tr.selected td{background:#fff8e8;border-left:3px solid #e8a000;}
+.inv-link{color:#1a73c8;text-decoration:none;cursor:pointer;}
+.inv-link:hover{text-decoration:underline;}
+.file-icon{color:#555;margin-right:5px;font-size:13px;}
+.dot-green{display:inline-block;width:12px;height:12px;border-radius:50%;background:#27a745;margin-right:5px;vertical-align:middle;}
+.dot-orange{display:inline-block;width:12px;height:12px;border-radius:50%;background:#e8a000;margin-right:5px;vertical-align:middle;}
+.dot-grey{display:inline-block;width:12px;height:12px;border-radius:50%;background:#888;margin-right:5px;vertical-align:middle;}
+.dot-green-outline{display:inline-block;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid #27a745;margin-right:5px;vertical-align:middle;}
+.pay-link{color:#1a73c8;text-decoration:none;cursor:pointer;font-size:13px;}
+.actions-cell{display:flex;align-items:center;gap:2px;}
+.gear-btn{background:#f5f5f5;border:1px solid #ccc;padding:4px 7px;cursor:pointer;font-size:12px;display:flex;align-items:center;}
+.gear-btn:hover{background:#e8e8e8;}
+.gear-dd{background:#f5f5f5;border:1px solid #ccc;border-left:none;padding:4px 5px;cursor:pointer;font-size:11px;}
+
+/* ── PAGINATION ── */
+.pagination{padding:10px 12px;font-size:13px;color:#333;}
+.pagination a{color:#1a73c8;text-decoration:none;cursor:pointer;padding:0 4px;}
+.pagination a:hover{text-decoration:underline;}
+.pagination .current{font-weight:700;padding:0 4px;}
+
+/* ── INVOICE DETAIL PANEL (slide in from right, like a modal overlay) ── */
+.detail-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:2000;}
+.detail-overlay.show{display:block;}
+.detail-panel{position:fixed;top:0;right:0;width:720px;height:100vh;background:#fff;box-shadow:-4px 0 24px rgba(0,0,0,0.18);z-index:2001;overflow-y:auto;display:flex;flex-direction:column;}
+.detail-panel-hdr{background:#1e2d3d;color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.detail-panel-hdr h2{font-size:15px;font-weight:400;}
+.close-btn{background:none;border:none;color:#aaa;font-size:22px;cursor:pointer;line-height:1;}
+.detail-body{padding:20px;flex:1;}
+.detail-section{margin-bottom:20px;}
+.detail-section-title{font-size:12px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #e0e0e0;padding-bottom:6px;margin-bottom:12px;}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.detail-field label{font-size:11px;color:#888;display:block;margin-bottom:3px;}
+.detail-field .val{font-size:13px;color:#222;font-weight:500;}
+.check-val{color:#27a745;}
+.line-tbl{width:100%;border-collapse:collapse;}
+.line-tbl th{background:#f0f0f0;text-align:left;padding:8px 10px;font-size:12px;color:#555;font-weight:700;}
+.line-tbl td{padding:8px 10px;border-bottom:1px solid #eee;font-size:13px;}
+.line-tbl td.amt{text-align:right;font-weight:600;}
+.line-tbl tr.total td{font-weight:700;border-top:2px solid #ddd;background:#f8f8f8;}
+.detail-actions{display:flex;gap:10px;padding:16px 20px;border-top:1px solid #e0e0e0;background:#f8f8f8;flex-shrink:0;}
+.btn-initiate{background:#3a7d44;color:#fff;border:none;padding:9px 20px;font-size:13px;cursor:pointer;font-weight:600;}
+.btn-initiate:hover{background:#2e6336;}
+.btn-outline{background:#fff;color:#333;border:1px solid #aaa;padding:8px 16px;font-size:13px;cursor:pointer;}
+.btn-outline:hover{background:#f0f0f0;}
+
+/* ── MODAL ── */
+.modal-mask{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:3000;align-items:center;justify-content:center;}
+.modal-mask.show{display:flex;}
+.modal{background:#fff;width:500px;border-radius:0;box-shadow:0 8px 32px rgba(0,0,0,0.22);}
+.modal-hdr{background:#1e2d3d;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;}
+.modal-hdr h3{font-size:15px;font-weight:400;}
+.modal-hdr button{background:none;border:none;color:#aaa;font-size:20px;cursor:pointer;}
+.modal-body{padding:20px;}
+.modal-inv-banner{background:#f5f9ff;border:1px solid #d0e4f7;padding:10px 14px;margin-bottom:16px;display:flex;justify-content:space-between;}
+.modal-inv-banner .inv-ref{font-size:13px;font-weight:600;color:#1e2d3d;}
+.modal-inv-banner .inv-amt{font-size:16px;font-weight:700;color:#1e2d3d;}
+.modal-section-lbl{font-size:12px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;}
+.pay-opt{border:1px solid #ddd;padding:12px 14px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:12px;}
+.pay-opt:hover{border-color:#1a73c8;background:#f5f9ff;}
+.pay-opt.selected{border-color:#1a73c8;background:#e8f2fb;}
+.pay-opt-icon{width:36px;height:36px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.pay-opt-info h4{font-size:13px;font-weight:600;color:#222;}
+.pay-opt-info p{font-size:12px;color:#777;margin-top:2px;}
+.rec-badge{margin-left:auto;background:#e8f4fd;color:#1a73c8;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;}
+.modal-footer{padding:12px 20px;background:#f5f5f5;border-top:1px solid #e0e0e0;display:flex;justify-content:flex-end;gap:8px;}
+.btn-cancel{background:#fff;color:#333;border:1px solid #aaa;padding:7px 16px;font-size:13px;cursor:pointer;}
+.btn-continue{background:#1a73c8;color:#fff;border:none;padding:7px 18px;font-size:13px;cursor:pointer;font-weight:500;}
+.btn-continue:hover{background:#1567a8;}
+.btn-continue:disabled{background:#9ab4cb;cursor:not-allowed;}
+
+/* ── VCN MODAL ── */
+.vcn-card{background:linear-gradient(135deg,#1e2d3d 0%,#1a73c8 100%);border-radius:8px;padding:18px;color:#fff;margin-bottom:16px;position:relative;}
+.vcn-chip{width:28px;height:20px;background:linear-gradient(135deg,#d4af37,#b8960a);border-radius:3px;margin-bottom:14px;}
+.vcn-num{font-size:12px;letter-spacing:2px;font-family:monospace;margin-bottom:10px;opacity:0.9;}
+.vcn-row{display:flex;justify-content:space-between;align-items:flex-end;}
+.vcn-fl label{font-size:9px;opacity:0.6;text-transform:uppercase;letter-spacing:0.5px;}
+.vcn-fl .v{font-size:12px;font-weight:600;margin-top:1px;}
+.vcn-brand{font-size:16px;font-weight:800;text-align:right;}
+.vcn-sub{font-size:9px;opacity:0.65;text-transform:uppercase;letter-spacing:0.5px;margin-top:1px;text-align:right;}
+.vcn-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.vcn-info-item label{font-size:11px;color:#888;display:block;margin-bottom:2px;}
+.vcn-info-item .v{font-size:13px;font-weight:600;color:#222;}
+.warn-box{background:#fff8e1;border:1px solid #f5c518;padding:9px 12px;font-size:12px;color:#7a5a10;}
+
+/* ── CONFIRMATION ── */
+.conf-banner{display:none;background:#eaf7ed;border:1px solid #27a745;padding:14px 20px;margin:0 16px 16px 16px;}
+.conf-banner.show{display:flex;align-items:flex-start;gap:14px;}
+.conf-check{font-size:24px;color:#27a745;flex-shrink:0;}
+.conf-title{font-size:15px;font-weight:700;color:#1a6632;margin-bottom:4px;}
+.conf-ref{font-size:13px;color:#2a7a40;}
+.conf-meta{display:flex;gap:20px;margin-top:8px;flex-wrap:wrap;}
+.conf-meta span{font-size:12px;color:#2a7a40;}
+
+/* ── SETTLED ROW ── */
+.settled-detail{display:none;background:#f0faf3;border:1px solid #b8dfc4;padding:12px 14px;margin-top:8px;}
+.settled-detail.show{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.settled-detail label{font-size:10px;color:#5a8a6a;display:block;text-transform:uppercase;letter-spacing:0.4px;}
+.settled-detail .v{font-size:12px;font-weight:600;color:#1a2b45;margin-top:2px;}
+
+.toast{position:fixed;bottom:20px;right:20px;background:#1e2d3d;color:#fff;padding:12px 18px;font-size:13px;border-left:4px solid #27a745;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:9999;display:none;}
+.toast.show{display:block;}
 </style>
 </head>
 <body>
 
-<!-- TOP HEADER BAR -->
-<div class="top-bar">
-  <div class="top-bar-left">
-    <div class="sap-logo">SAP</div>
-    <div class="taulia-brand">Taulia</div>
-    <div class="hsbc-cobrand">Powered by <span class="hsbc-red">HSBC</span></div>
+<!-- TOP NAV -->
+<div class="top-nav">
+  <div class="top-nav-left">
+    <span class="sap-box">SAP</span>
+    <span class="taulia-word">Taulia</span>
   </div>
-  <div class="top-bar-right">
-    <div class="entity-badge">
-      <span>Entity: DLA Piper Spain &nbsp;▾</span>
-    </div>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  <div class="top-nav-right">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
   </div>
 </div>
 
-<!-- SUB NAVIGATION -->
-<div class="sub-nav">
-  <div class="sub-nav-item active">Home</div>
-  <div class="sub-nav-item">Payables ▾</div>
-  <div class="sub-nav-item" onclick="showSettlements()">Settlements</div>
-  <div class="sub-nav-item">Suppliers</div>
-  <div class="sub-nav-item">Analytics ▾</div>
-  <div class="sub-nav-item">Messages</div>
+<!-- SECOND NAV -->
+<div class="sec-nav">
+  <div class="sec-nav-item">Home</div>
+  <div class="sec-nav-item">Receivables ▾</div>
+  <div class="sec-nav-item active">Customers</div>
+  <div class="sec-nav-item">Partner Programs</div>
 </div>
 
-<!-- MAIN CONTENT -->
-<div class="main" id="main-home">
+<!-- PAGE HEADER -->
+<div class="page-hdr" style="padding:10px 20px 8px 20px;">
+  <span class="page-hdr-title">Customers</span>
+  <span class="page-hdr-arrow">▾</span>
+</div>
 
-  <!-- Confirmation Banner (hidden initially) -->
-  <div class="confirmation-banner" id="confirmation-banner">
-    <div class="conf-icon">✅</div>
-    <div>
-      <div class="conf-title">Settlement Processed Successfully</div>
-      <div class="conf-ref">Reference: <strong>STL-2026-0318-VC0298</strong> &nbsp;·&nbsp; Reconciliation ref logged to DLA Madrid ERP</div>
-      <div class="conf-meta">
-        <div class="conf-meta-item">Supplier: <strong>Indra Sistemas S.A.</strong></div>
-        <div class="conf-meta-item">Amount: <strong>€14,000.00</strong></div>
-        <div class="conf-meta-item">Method: <strong>Virtual Card (Taulia VCN)</strong></div>
-        <div class="conf-meta-item">Date: <strong>18 Mar 2026</strong></div>
-      </div>
+<!-- CONFIRMATION BANNER -->
+<div class="conf-banner" id="conf-banner">
+  <div class="conf-check">✓</div>
+  <div>
+    <div class="conf-title">Settlement Processed Successfully</div>
+    <div class="conf-ref">Reference: <strong>STL-2026-0318-VC0298</strong> · Reconciliation ref logged to DLA Madrid ERP</div>
+    <div class="conf-meta">
+      <span>Supplier: <strong>Indra Sistemas S.A.</strong></span>
+      <span>Amount: <strong>€14,000.00</strong></span>
+      <span>Method: <strong>Taulia VCN</strong></span>
+      <span>Date: <strong>18 Mar 2026</strong></span>
     </div>
   </div>
+</div>
 
-  <!-- Stats Row -->
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-label">Pending Settlements</div>
-      <div class="stat-value" id="pending-count">1</div>
-      <div class="stat-sub">Due this week</div>
+<!-- OUTER WRAP: the white supplier portal card -->
+<div class="outer-wrap">
+
+  <!-- Supplier portal header with SAP Taulia logo -->
+  <div class="supplier-header">
+    <div class="sap-taulia-logo">
+      <div class="logo-sap-part">
+        <span class="logo-sap-box">SAP</span>
+        <span style="display:inline-block;width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:12px solid #1a5fb4;"></span>
+      </div>
+      <span class="logo-taulia-text">Taulia</span>
     </div>
-    <div class="stat-card">
-      <div class="stat-label">Total Exposure</div>
-      <div class="stat-value">€14,000</div>
-      <div class="stat-sub">Ready for release</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Settled This Month</div>
-      <div class="stat-value">€287,450</div>
-      <div class="stat-sub">23 invoices</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">VCN Utilisation</div>
-      <div class="stat-value">94%</div>
-      <div class="stat-sub">of settlements</div>
-    </div>
+    <nav class="supplier-nav">
+      <a>Home</a>
+      <a class="active" style="color:#1a73c8;font-weight:600;">Invoices</a>
+      <a>Payments</a>
+      <a>Cash Planner</a>
+      <a>Cashflow™</a>
+      <a>My Details</a>
+      <a>Custom FAQs</a>
+    </nav>
   </div>
 
-  <!-- Pending Settlements Section -->
-  <div class="section-header">
-    <div>
-      <div class="section-title">Pending Settlements</div>
-    </div>
-    <div class="filter-bar">
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">Ready for Settlement</button>
-      <button class="filter-btn">Awaiting Approval</button>
-      <button class="btn-primary" onclick="window.scrollTo(0,200)">+ New Settlement</button>
-    </div>
+  <!-- Entity line (DLA Piper Spain) -->
+  <div style="background:#f8f8f8;border-bottom:1px solid #e0e0e0;padding:6px 20px;font-size:12px;color:#555;">
+    Entity: <strong>DLA Piper Spain</strong> &nbsp;·&nbsp; Powered by <span style="color:#db0011;font-weight:700;">HSBC</span>
   </div>
 
-  <!-- Invoice Card — INDRA SISTEMAS -->
-  <div class="invoice-card" id="invoice-card-indra" onclick="toggleInvoice()">
-    <div class="invoice-card-header">
-      <div class="invoice-card-left">
-        <div class="supplier-icon">IS</div>
-        <div class="invoice-info">
-          <h3>Indra Sistemas S.A.</h3>
-          <div class="invoice-ref">Invoice: INV-INDRA-2026-0298 &nbsp;·&nbsp; Budget Code: ES-IT-2026-Q1</div>
+  <!-- Invoice page -->
+  <div class="inv-page">
+    <div class="inv-title">My Invoices</div>
+
+    <!-- Search panel -->
+    <div class="search-panel">
+      <div class="search-panel-hdr">
+        <span class="search-panel-lbl">Search My Invoices</span>
+        <a class="adv-search-link">Advanced Search</a>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Invoice Number</span>
+        <input class="form-input" id="inv-search" value="INV-INDRA-2026-0298">
+        <span class="form-help">?</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Purchase Order</span>
+        <input class="form-input" value="">
+        <span class="form-help">?</span>
+        <span class="search-icon">🔍</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Invoice Status</span>
+        <select class="form-select">
+          <option>All</option>
+          <option>Unpaid</option>
+          <option>Paid</option>
+          <option selected>Ready for Settlement</option>
+        </select>
+        <span class="form-help">?</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Customer</span>
+        <select class="form-select"><option>DLA Piper Spain</option></select>
+        <span class="form-help">?</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Filter By</span>
+        <div class="radio-row">
+          <label><input type="radio" name="fby" value="inv"> Invoice</label>
+          <label><input type="radio" name="fby" value="cn"> Credit Note</label>
+          <label><input type="radio" name="fby" value="all" checked> All</label>
         </div>
       </div>
-      <div class="invoice-card-meta">
-        <div class="meta-item">
-          <div class="meta-label">Amount</div>
-          <div class="meta-value">€14,000.00</div>
-        </div>
-        <div class="meta-item">
-          <div class="meta-label">Due Date</div>
-          <div class="meta-value">22 Mar 2026</div>
-        </div>
-        <div class="meta-item">
-          <span class="status-badge status-ready" id="invoice-status-badge">Ready for Settlement</span>
-        </div>
-        <div>
-          <svg class="chevron" id="invoice-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </div>
+      <div class="search-btn-row">
+        <button class="btn-search">Search</button>
+      </div>
+    </div>
+
+    <!-- Results bar -->
+    <div class="results-bar">
+      <span class="results-bar-left" id="results-lbl">Showing 1-1 of 1 Invoice</span>
+      <div class="results-bar-right">
+        <a>⬇ Download List</a>
+        <a>↻ Refresh</a>
       </div>
     </div>
 
-    <!-- Expanded Detail -->
-    <div class="invoice-detail" id="invoice-detail">
-      <div class="detail-grid">
-        <div class="detail-field">
-          <label>Supplier</label>
-          <div class="field-value">Indra Sistemas S.A.</div>
-        </div>
-        <div class="detail-field">
-          <label>Invoice Number</label>
-          <div class="field-value">INV-INDRA-2026-0298</div>
-        </div>
-        <div class="detail-field">
-          <label>Invoice Date</label>
-          <div class="field-value">01 Mar 2026</div>
-        </div>
-        <div class="detail-field">
-          <label>PO Match</label>
-          <div class="field-value"><span class="check-icon">✓</span>Confirmed (PO-DLA-2026-ES-0441)</div>
-        </div>
-        <div class="detail-field">
-          <label>Goods Receipt</label>
-          <div class="field-value"><span class="check-icon">✓</span>Confirmed (GR-2026-0298)</div>
-        </div>
-        <div class="detail-field">
-          <label>Approver</label>
-          <div class="field-value">DLA Finance Madrid</div>
-        </div>
-        <div class="detail-field">
-          <label>Budget Code</label>
-          <div class="field-value">ES-IT-2026-Q1</div>
-        </div>
-        <div class="detail-field">
-          <label>Payment Terms</label>
-          <div class="field-value">Net 30</div>
-        </div>
-        <div class="detail-field">
-          <label>Currency</label>
-          <div class="field-value">EUR (€)</div>
+    <!-- Data table -->
+    <table class="data-table" id="inv-table">
+      <thead>
+        <tr>
+          <th>Invoice #</th>
+          <th>Inv. Date ▾</th>
+          <th>PO #</th>
+          <th>Due Date</th>
+          <th style="text-align:right;">Document Amount</th>
+          <th>Status</th>
+          <th>Payment</th>
+          <th class="no-link">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="inv-tbody">
+        <tr id="inv-row" onclick="openDetail()">
+          <td><span class="file-icon">📄</span><a class="inv-link">INV-INDRA-2026-0298</a></td>
+          <td>01 Mar 2026</td>
+          <td>PO-DLA-2026-ES-0441</td>
+          <td>22 Mar 2026</td>
+          <td style="text-align:right;">€14,000.00</td>
+          <td><span class="dot-green"></span><span id="inv-status-txt">Ready for Settlement</span></td>
+          <td id="inv-pay-cell"><span style="color:#888;font-size:12px;">— Pending —</span></td>
+          <td><div class="actions-cell"><button class="gear-btn">⚙</button><button class="gear-dd">▾</button></div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">1 | Total items: 1</div>
+  </div>
+</div><!-- end outer-wrap -->
+
+<!-- ══════════════════════════════════════════
+     INVOICE DETAIL SIDE PANEL
+     ══════════════════════════════════════════ -->
+<div class="detail-overlay" id="detail-overlay" onclick="closeDetail(event)">
+  <div class="detail-panel" id="detail-panel" onclick="event.stopPropagation()">
+    <div class="detail-panel-hdr">
+      <h2>Invoice Detail — INV-INDRA-2026-0298</h2>
+      <button class="close-btn" onclick="closeDetailPanel()">✕</button>
+    </div>
+    <div class="detail-body">
+
+      <div class="detail-section">
+        <div class="detail-section-title">Invoice Information</div>
+        <div class="detail-grid">
+          <div class="detail-field"><label>Supplier</label><div class="val">Indra Sistemas S.A.</div></div>
+          <div class="detail-field"><label>Invoice Number</label><div class="val">INV-INDRA-2026-0298</div></div>
+          <div class="detail-field"><label>Invoice Date</label><div class="val">01 Mar 2026</div></div>
+          <div class="detail-field"><label>Due Date</label><div class="val">22 Mar 2026</div></div>
+          <div class="detail-field"><label>Currency</label><div class="val">EUR (€)</div></div>
+          <div class="detail-field"><label>Budget Code</label><div class="val">ES-IT-2026-Q1</div></div>
+          <div class="detail-field"><label>PO Match</label><div class="val check-val">✓ Confirmed (PO-DLA-2026-ES-0441)</div></div>
+          <div class="detail-field"><label>Goods Receipt</label><div class="val check-val">✓ Confirmed (GR-2026-0298)</div></div>
+          <div class="detail-field"><label>Approver</label><div class="val">DLA Finance Madrid</div></div>
         </div>
       </div>
 
-      <table class="line-items-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Description</th>
-            <th>Period</th>
-            <th>Qty</th>
-            <th>Unit Price</th>
-            <th class="amount-cell">Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>IT Infrastructure Services Q1 2026</td>
-            <td>Jan–Mar 2026</td>
-            <td>1</td>
-            <td>€12,000.00</td>
-            <td class="amount-cell">€12,000.00</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Network Security Monitoring — Q1</td>
-            <td>Jan–Mar 2026</td>
-            <td>1</td>
-            <td>€2,000.00</td>
-            <td class="amount-cell">€2,000.00</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td colspan="4" style="text-align:right; font-weight:700; color:#1a2b45; font-size:14px;">Total</td>
-            <td class="amount-cell" style="font-size:15px; color:#1a2b45;">€14,000.00</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="action-row" id="action-row-initial">
-        <button class="btn-primary" id="btn-initiate" onclick="event.stopPropagation(); openPaymentModal()">
-          Initiate Settlement
-        </button>
-        <button class="btn-secondary" onclick="event.stopPropagation()">Download Invoice</button>
-        <button class="btn-secondary" onclick="event.stopPropagation()">View Audit Trail</button>
+      <div class="detail-section">
+        <div class="detail-section-title">Line Items</div>
+        <table class="line-tbl">
+          <thead><tr><th>#</th><th>Description</th><th>Period</th><th>Qty</th><th>Unit Price</th><th style="text-align:right;">Amount</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>IT Infrastructure Services Q1 2026</td><td>Jan–Mar 2026</td><td>1</td><td>€12,000.00</td><td class="amt">€12,000.00</td></tr>
+            <tr><td>2</td><td>Network Security Monitoring — Q1</td><td>Jan–Mar 2026</td><td>1</td><td>€2,000.00</td><td class="amt">€2,000.00</td></tr>
+            <tr class="total"><td colspan="5" style="text-align:right;font-size:14px;">Total</td><td class="amt" style="font-size:14px;">€14,000.00</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <!-- Post-settlement detail (hidden initially) -->
-      <div id="settled-detail" style="display:none;">
-        <div style="background:#f0faf4; border:1px solid #a8ddb8; border-radius:8px; padding:16px 20px; margin-top:8px;">
-          <div style="font-size:13px; font-weight:700; color:#1a7a3a; margin-bottom:10px;">Settlement Complete</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
-            <div><div style="font-size:10px;color:#7a9a8a;text-transform:uppercase;letter-spacing:0.4px;">Settlement Ref</div><div style="font-size:13px;font-weight:600;color:#1a2b45;margin-top:2px;">STL-2026-0318-VC0298</div></div>
-            <div><div style="font-size:10px;color:#7a9a8a;text-transform:uppercase;letter-spacing:0.4px;">Virtual Card Ref</div><div style="font-size:13px;font-weight:600;color:#1a2b45;margin-top:2px;">0298-DLA-INDRA</div></div>
-            <div><div style="font-size:10px;color:#7a9a8a;text-transform:uppercase;letter-spacing:0.4px;">Settlement Date</div><div style="font-size:13px;font-weight:600;color:#1a2b45;margin-top:2px;">18 Mar 2026</div></div>
-            <div><div style="font-size:10px;color:#7a9a8a;text-transform:uppercase;letter-spacing:0.4px;">Method</div><div style="font-size:13px;font-weight:600;color:#1a2b45;margin-top:2px;">Virtual Card (Taulia VCN)</div></div>
-            <div><div style="font-size:10px;color:#7a9a8a;text-transform:uppercase;letter-spacing:0.4px;">Card Expiry</div><div style="font-size:13px;font-weight:600;color:#1a2b45;margin-top:2px;">31 Mar 2026 (single-use)</div></div>
-            <div><div style="font-size:10px;color:#7a9a8a;text-transform:uppercase;letter-spacing:0.4px;">Reconciliation Ref</div><div style="font-size:13px;font-weight:600;color:#27ae60;margin-top:2px;">✓ Logged to ERP</div></div>
-          </div>
-        </div>
+      <!-- settled detail (hidden until settled) -->
+      <div class="settled-detail" id="settled-detail">
+        <div><label>Settlement Ref</label><div class="v">STL-2026-0318-VC0298</div></div>
+        <div><label>Virtual Card Ref</label><div class="v">0298-DLA-INDRA</div></div>
+        <div><label>Settlement Date</label><div class="v">18 Mar 2026</div></div>
+        <div><label>Method</label><div class="v">Taulia VCN</div></div>
+        <div><label>Card Expiry</label><div class="v">31 Mar 2026 (single-use)</div></div>
+        <div><label>Reconciliation</label><div class="v" style="color:#27a745;">✓ Logged to ERP</div></div>
       </div>
+
+    </div>
+    <div class="detail-actions" id="detail-actions">
+      <button class="btn-initiate" id="btn-initiate" onclick="openPayModal()">Initiate Settlement</button>
+      <button class="btn-outline">Download Invoice</button>
+      <button class="btn-outline">View Audit Trail</button>
     </div>
   </div>
+</div>
 
-  <!-- Empty state message after settlement -->
-  <div id="empty-state" style="display:none;" class="empty-state">
-    <div class="empty-icon">📭</div>
-    <div style="font-size:15px;font-weight:600;color:#5a6a7a;">No Pending Settlements</div>
-    <div style="font-size:13px;color:#9aaabb;margin-top:6px;">All invoices have been settled</div>
-  </div>
-
-</div><!-- end main -->
-
-<!-- ========================================
-     MODAL: PAYMENT METHOD SELECTION
-     ======================================== -->
-<div class="modal-overlay" id="payment-modal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h2>Select Payment Method</h2>
-      <button class="modal-close" onclick="closePaymentModal()">✕</button>
+<!-- ══════════════════════════════════════════
+     PAYMENT METHOD MODAL
+     ══════════════════════════════════════════ -->
+<div class="modal-mask" id="pay-modal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <h3>Select Payment Method</h3>
+      <button onclick="closePayModal()">✕</button>
     </div>
     <div class="modal-body">
-      <div style="background:#f5f9fd; border-radius:8px; padding:12px 16px; margin-bottom:20px; display:flex; justify-content:space-between;">
-        <div>
-          <div style="font-size:11px;color:#7a8a9a;text-transform:uppercase;letter-spacing:0.4px;">Invoice</div>
-          <div style="font-size:13px;font-weight:600;color:#1a2b45;margin-top:2px;">INV-INDRA-2026-0298 &nbsp;·&nbsp; Indra Sistemas S.A.</div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-size:11px;color:#7a8a9a;text-transform:uppercase;letter-spacing:0.4px;">Amount</div>
-          <div style="font-size:16px;font-weight:700;color:#1a2b45;margin-top:2px;">€14,000.00</div>
-        </div>
+      <div class="modal-inv-banner">
+        <div><div style="font-size:11px;color:#777;text-transform:uppercase;letter-spacing:0.4px;">Invoice</div><div class="inv-ref">INV-INDRA-2026-0298 · Indra Sistemas S.A.</div></div>
+        <div style="text-align:right;"><div style="font-size:11px;color:#777;text-transform:uppercase;letter-spacing:0.4px;">Amount</div><div class="inv-amt">€14,000.00</div></div>
       </div>
-      <div class="modal-section-title">Choose Payment Method</div>
-      <div class="payment-method-list">
-        <div class="payment-option selected" id="opt-vcn" onclick="selectPayment('vcn')">
-          <div class="payment-icon vcn">💳</div>
-          <div class="payment-option-info">
-            <h4>Virtual Card (Taulia VCN)</h4>
-            <p>Single-use virtual card — instant settlement, full audit trail</p>
-          </div>
-          <div class="recommended-badge">Recommended</div>
-        </div>
-        <div class="payment-option" id="opt-ach" onclick="selectPayment('ach')">
-          <div class="payment-icon ach">🏦</div>
-          <div class="payment-option-info">
-            <h4>ACH / SEPA Transfer</h4>
-            <p>Standard bank transfer — 1-3 business days</p>
-          </div>
-        </div>
-        <div class="payment-option" id="opt-wire" onclick="selectPayment('wire')">
-          <div class="payment-icon wire">⚡</div>
-          <div class="payment-option-info">
-            <h4>Wire Transfer</h4>
-            <p>Same-day settlement — additional fees may apply</p>
-          </div>
-        </div>
+      <div class="modal-section-lbl">Choose Payment Method</div>
+      <div class="pay-opt selected" id="opt-vcn" onclick="selPay('vcn')">
+        <div class="pay-opt-icon" style="background:#e8f2fb;">💳</div>
+        <div class="pay-opt-info"><h4>Virtual Card (Taulia VCN)</h4><p>Single-use card · instant settlement · full audit trail</p></div>
+        <div class="rec-badge">Recommended</div>
+      </div>
+      <div class="pay-opt" id="opt-ach" onclick="selPay('ach')">
+        <div class="pay-opt-icon" style="background:#e8f7ee;">🏦</div>
+        <div class="pay-opt-info"><h4>SEPA Bank Transfer</h4><p>Standard transfer · 1–3 business days</p></div>
+      </div>
+      <div class="pay-opt" id="opt-wire" onclick="selPay('wire')">
+        <div class="pay-opt-icon" style="background:#fff8e1;">⚡</div>
+        <div class="pay-opt-info"><h4>Wire Transfer</h4><p>Same-day · additional fees may apply</p></div>
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn-secondary" onclick="closePaymentModal()">Cancel</button>
-      <button class="btn-primary" id="btn-next-payment" onclick="proceedToVCN()">Continue →</button>
+      <button class="btn-cancel" onclick="closePayModal()">Cancel</button>
+      <button class="btn-continue" id="btn-continue" onclick="proceedVCN()">Continue →</button>
     </div>
   </div>
 </div>
 
-<!-- ========================================
-     MODAL: VCN CARD DETAILS + CONFIRM
-     ======================================== -->
-<div class="modal-overlay" id="vcn-modal">
-  <div class="modal-box" style="width:540px;">
-    <div class="modal-header">
-      <h2>Virtual Card Details — Confirm Settlement</h2>
-      <button class="modal-close" onclick="closeVCNModal()">✕</button>
+<!-- ══════════════════════════════════════════
+     VCN CONFIRM MODAL
+     ══════════════════════════════════════════ -->
+<div class="modal-mask" id="vcn-modal">
+  <div class="modal" style="width:540px;">
+    <div class="modal-hdr">
+      <h3>Virtual Card Details — Confirm Settlement</h3>
+      <button onclick="closeVCNModal()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="vcn-card-visual">
-        <div class="vcn-chip"><div class="vcn-chip-inner"></div></div>
-        <div class="vcn-number">0298 •••• •••• DLA–INDRA</div>
-        <div class="vcn-details">
-          <div class="vcn-field">
-            <label>Card Holder</label>
-            <div class="vcn-val">DLA PIPER SPAIN</div>
-          </div>
-          <div class="vcn-field" style="text-align:center;">
-            <label>Expires</label>
-            <div class="vcn-val">03/26</div>
-          </div>
-          <div style="text-align:right;">
-            <div class="vcn-brand">TAULIA</div>
-            <div class="vcn-badge">VCN · Single Use</div>
-          </div>
+      <div class="vcn-card">
+        <div class="vcn-chip"></div>
+        <div class="vcn-num">0298 ···· ···· DLA–INDRA</div>
+        <div class="vcn-row">
+          <div class="vcn-fl"><label>Card Holder</label><div class="v">DLA PIPER SPAIN</div></div>
+          <div class="vcn-fl" style="text-align:center;"><label>Expires</label><div class="v">03/26</div></div>
+          <div><div class="vcn-brand">TAULIA</div><div class="vcn-sub">VCN · Single Use</div></div>
         </div>
       </div>
-      <div class="vcn-info-row">
-        <div class="vcn-info-item">
-          <label>Card Reference</label>
-          <div class="vcn-info-val">0298-DLA-INDRA</div>
-        </div>
-        <div class="vcn-info-item">
-          <label>Authorised Amount</label>
-          <div class="vcn-info-val" style="color:#1a7ec8;">€14,000.00</div>
-        </div>
-        <div class="vcn-info-item">
-          <label>Valid Until</label>
-          <div class="vcn-info-val">31 Mar 2026</div>
-        </div>
-        <div class="vcn-info-item">
-          <label>Card Type</label>
-          <div class="vcn-info-val">Single-Use VCN</div>
-        </div>
-        <div class="vcn-info-item">
-          <label>Payee</label>
-          <div class="vcn-info-val">Indra Sistemas S.A.</div>
-        </div>
-        <div class="vcn-info-item">
-          <label>Settlement Reference</label>
-          <div class="vcn-info-val">STL-2026-0318-VC0298</div>
-        </div>
+      <div class="vcn-info">
+        <div class="vcn-info-item"><label>Card Reference</label><div class="v">0298-DLA-INDRA</div></div>
+        <div class="vcn-info-item"><label>Authorised Amount</label><div class="v" style="color:#1a73c8;">€14,000.00</div></div>
+        <div class="vcn-info-item"><label>Valid Until</label><div class="v">31 Mar 2026</div></div>
+        <div class="vcn-info-item"><label>Settlement Ref</label><div class="v">STL-2026-0318-VC0298</div></div>
+        <div class="vcn-info-item"><label>Payee</label><div class="v">Indra Sistemas S.A.</div></div>
+        <div class="vcn-info-item"><label>Card Type</label><div class="v">Single-Use VCN</div></div>
       </div>
-      <div style="background:#fff8e8; border:1px solid #f5c842; border-radius:6px; padding:10px 14px; font-size:12px; color:#7a5a10;">
-        ⚠️ This single-use card will be automatically invalidated after first charge. Reconciliation reference will be logged to DLA Madrid ERP upon settlement.
-      </div>
+      <div class="warn-box">⚠ This single-use card will be invalidated after first charge. Reconciliation ref logged to DLA Madrid ERP on settlement.</div>
     </div>
     <div class="modal-footer">
-      <button class="btn-secondary" onclick="closeVCNModal()">Back</button>
-      <button class="btn-primary" id="btn-confirm-settlement" onclick="confirmSettlement()">Confirm Settlement</button>
+      <button class="btn-cancel" onclick="closeVCNModal()">Back</button>
+      <button class="btn-continue" id="btn-confirm" onclick="confirmSettlement()">Confirm Settlement</button>
     </div>
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-let invoiceExpanded = false;
-let selectedPayment = 'vcn';
-let isSettled = false;
+let selectedPay = 'vcn';
+let settled = false;
 
-function toggleInvoice() {
-  if (isSettled) return;
-  invoiceExpanded = !invoiceExpanded;
-  const detail = document.getElementById('invoice-detail');
-  const chevron = document.getElementById('invoice-chevron');
-  const card = document.getElementById('invoice-card-indra');
-  if (invoiceExpanded) {
-    detail.classList.add('show');
-    chevron.classList.add('open');
-    card.classList.add('expanded');
-  } else {
-    detail.classList.remove('show');
-    chevron.classList.remove('open');
-    card.classList.remove('expanded');
-  }
+function openDetail() {
+  document.getElementById('detail-overlay').classList.add('show');
 }
-
-function openPaymentModal() {
-  document.getElementById('payment-modal').classList.add('show');
+function closeDetail(e) {
+  if (e.target === document.getElementById('detail-overlay')) closeDetailPanel();
 }
-function closePaymentModal() {
-  document.getElementById('payment-modal').classList.remove('show');
+function closeDetailPanel() {
+  document.getElementById('detail-overlay').classList.remove('show');
 }
-
-function selectPayment(type) {
-  selectedPayment = type;
-  document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
-  document.getElementById('opt-' + type).classList.add('selected');
+function openPayModal() {
+  document.getElementById('pay-modal').classList.add('show');
 }
-
-function proceedToVCN() {
-  if (selectedPayment !== 'vcn') {
-    showToast('Please select Virtual Card (VCN) for this demo flow');
-    return;
-  }
-  closePaymentModal();
-  setTimeout(() => {
-    document.getElementById('vcn-modal').classList.add('show');
-  }, 200);
+function closePayModal() {
+  document.getElementById('pay-modal').classList.remove('show');
 }
-
+function selPay(t) {
+  selectedPay = t;
+  document.querySelectorAll('.pay-opt').forEach(e => e.classList.remove('selected'));
+  document.getElementById('opt-' + t).classList.add('selected');
+}
+function proceedVCN() {
+  closePayModal();
+  setTimeout(() => document.getElementById('vcn-modal').classList.add('show'), 150);
+}
 function closeVCNModal() {
   document.getElementById('vcn-modal').classList.remove('show');
 }
-
 function confirmSettlement() {
-  const btn = document.getElementById('btn-confirm-settlement');
+  const btn = document.getElementById('btn-confirm');
   btn.textContent = 'Processing…';
   btn.disabled = true;
-
   setTimeout(() => {
     closeVCNModal();
-    markSettled();
+    doSettle();
   }, 1800);
 }
-
-function markSettled() {
-  isSettled = true;
-
+function doSettle() {
+  settled = true;
+  // Update table row
+  document.getElementById('inv-status-txt').textContent = 'Settled';
+  const dot = document.querySelector('#inv-row .dot-green');
+  if (dot) { dot.style.background = '#27a745'; }
+  document.getElementById('inv-pay-cell').innerHTML = '<a class="pay-link">Card Charged</a>';
+  // Show settled detail in panel
+  document.getElementById('settled-detail').classList.add('show');
+  // Hide initiate button
+  document.getElementById('btn-initiate').style.display = 'none';
   // Show confirmation banner
-  document.getElementById('confirmation-banner').classList.add('show');
-
-  // Update invoice card
-  const card = document.getElementById('invoice-card-indra');
-  card.classList.remove('expanded');
-  card.classList.add('settled');
-  card.style.cursor = 'default';
-
-  // Update status badge
-  const badge = document.getElementById('invoice-status-badge');
-  badge.className = 'status-badge status-settled';
-  badge.textContent = 'SETTLED';
-
-  // Update invoice detail
-  const detail = document.getElementById('invoice-detail');
-  detail.classList.add('show');
-
-  // Hide initiate button, show settled detail
-  document.getElementById('action-row-initial').style.display = 'none';
-  document.getElementById('settled-detail').style.display = 'block';
-
-  // Update stat card
-  document.getElementById('pending-count').textContent = '0';
-
-  // Update meta value for date
-  const metaValues = document.querySelectorAll('.meta-value');
-  // Settlement date
-  const chevron = document.getElementById('invoice-chevron');
-  chevron.style.display = 'none';
-
-  showToast('✅ Settlement STL-2026-0318-VC0298 processed. Reconciliation ref logged.');
-
+  document.getElementById('conf-banner').classList.add('show');
+  // Toast
+  showToast('✓ Settlement STL-2026-0318-VC0298 processed. Reconciliation ref logged.');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 4000);
+  setTimeout(() => t.classList.remove('show'), 4500);
 }
-
-function showSettlements() {
-  window.scrollTo({ top: 120, behavior: 'smooth' });
-}
-
-// Auto-expand the invoice card after 0.8s to show initial state clearly
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    // don't auto-expand, let Playwright control it
-  }, 800);
-});
 </script>
 </body>
 </html>
