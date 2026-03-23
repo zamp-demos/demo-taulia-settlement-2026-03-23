@@ -11,7 +11,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 /* ── TOP NAVBAR ── */
 .top-nav{background:#1e2d3d;height:46px;display:flex;align-items:center;padding:0 16px;justify-content:space-between;position:fixed;top:0;left:0;right:0;z-index:1000;}
 .top-nav-left{display:flex;align-items:center;gap:10px;}
-.sap-box{display:inline-flex;align-items:center;vertical-align:middle;line-height:1;}
+.sap-box{display:inline-flex;align-items:center;line-height:1;}
 .taulia-word{color:#fff;font-size:17px;font-weight:400;letter-spacing:0.2px;}
 .top-nav-right{display:flex;align-items:center;gap:18px;}
 .top-nav-right svg{color:#9ab0c4;cursor:pointer;width:20px;height:20px;}
@@ -78,7 +78,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 /* Supplier portal inner header */
 .supplier-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #e0e0e0;}
 .sap-taulia-logo{display:flex;align-items:center;}
+.logo-sap{display:inline-flex;align-items:center;line-height:1;}
 .logo-tri{display:inline-block;width:0;height:0;border-top:17px solid transparent;border-bottom:17px solid transparent;border-left:13px solid #1557b0;}
+.logo-taulia{color:#1a5fb4;font-size:22px;font-weight:700;letter-spacing:-0.3px;margin-left:5px;}
 .sup-nav{display:flex;align-items:center;}
 .sup-nav a{font-size:13px;color:#333;text-decoration:none;padding:0 12px;cursor:pointer;white-space:nowrap;}
 .sup-nav a:hover{color:#1a73c8;}
@@ -210,35 +212,177 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 <!-- TOP NAV -->
 <div class="top-nav">
   <div class="top-nav-left">
-    <span class="sap-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 28" width="56" height="28" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><defs><linearGradient id="sapg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00b2f1"/><stop offset="100%" stop-color="#0070c0"/></linearGradient></defs><polygon points="0,0 56,0 32,28 0,28" fill="url(#sapg2)"/><text x="3" y="22" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="900" fill="white" letter-spacing="-0.5">SAP</text></svg></span>
+    <span class="sap-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 28" width="42" height="28" style="display:block;"><defs><linearGradient id="sg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00adef"/><stop offset="100%" stop-color="#0070c0"/></linearGradient></defs><rect width="42" height="28" fill="url(#sg1)"/><polygon points="25,28 42,4 42,28" fill="white"/><text x="3" y="21" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="900" fill="white" letter-spacing="-0.3">SAP</text></svg></span>
     <span class="taulia-word">Taulia</span>
   </div>
   <div class="top-nav-right">
-    <span style="color:#9ab0c4;font-size:18px;cursor:pointer;">&#9881;</span>
-    <span style="color:#9ab0c4;font-size:18px;cursor:pointer;">&#128100;</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
   </div>
 </div>
 
-<!-- SUPPLIER PORTAL WRAP -->
-<div class="sup-portal-wrap">
-  <!-- White header: SAP logo + Taulia + HSBC + nav -->
-  <div class="sup-header">
-    <div class="sup-header-left">
-      <span class="logo-sap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 30" width="44" height="30" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><defs><linearGradient id="sapLg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00adef"/><stop offset="100%" stop-color="#0070c0"/></linearGradient></defs><rect width="44" height="30" fill="url(#sapLg)"/><polygon points="26,30 44,4 44,30" fill="white"/><text x="3" y="23" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="900" fill="white" letter-spacing="-0.3">SAP</text></svg></span>
-      <span class="logo-taulia">Taulia</span>
-      <span class="hsbc-divider">|</span>
-      <span class="hsbc-txt">Powered by <span style="color:#db0011;font-weight:700;">HSBC</span></span>
+<!-- SECOND NAV -->
+<div class="sec-nav">
+  <div class="sec-nav-item active" id="nav-home" onclick="showPage('home')">Home</div>
+  <div class="sec-nav-item" id="nav-payables" onclick="showPage('payables')">Payables <span class="arr">▾</span></div>
+  <div class="sec-nav-item" id="nav-receivables">Receivables <span class="arr">▾</span></div>
+  <div class="sec-nav-item" id="nav-suppliers">Suppliers <span class="arr">▾</span></div>
+  <div class="sec-nav-item" id="nav-cash">Cash <span class="arr">▾</span></div>
+  <div class="sec-nav-item" id="nav-analytics">Analytics <span class="arr">▾</span></div>
+</div>
+
+<!-- ══════════════════════════════════
+     HOME PAGE
+     ══════════════════════════════════ -->
+<div class="page active" id="page-home" style="padding:16px 20px;">
+
+  <!-- Quick Access Links -->
+  <div class="quick-links-card">
+    <div class="quick-links-title">Quick Access Links</div>
+    <div class="quick-links-grid">
+      <div class="ql-item" onclick="showPage('payables')">
+        <div class="ql-icon">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+        </div>
+        <div class="ql-label">Supplier Center</div>
+      </div>
+      <div class="ql-item">
+        <div class="ql-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M6 8h.01M9 8h6M6 12h12"/></svg>
+        </div>
+        <div class="ql-label">Purchase Orders</div>
+      </div>
+      <div class="ql-item">
+        <div class="ql-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="3" stroke-dasharray="2 2"/></svg>
+        </div>
+        <div class="ql-label">Invoice Manager</div>
+      </div>
+      <div class="ql-item">
+        <div class="ql-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        </div>
+        <div class="ql-label">Early Payments</div>
+      </div>
+      <div class="ql-item">
+        <div class="ql-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <div class="ql-label">Virtual Cards</div>
+      </div>
     </div>
-    <nav class="sup-nav">
-      <a>Home</a>
-      <a class="active-link">Invoices</a>
-      <a>Payments</a>
-      <a>Cash Planner</a>
-      <a>Cashflow™</a>
-      <a>My Details</a>
-      <a>Custom FAQs</a>
-    </nav>
   </div>
+
+  <!-- Filter bar row -->
+  <div class="filter-bar-row">
+    <button class="filter-btn">Filters · 9 <span style="font-size:11px;">▾</span></button>
+    <div class="filter-bar-right">
+      <span>1m ago</span>
+      <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+    </div>
+  </div>
+
+  <!-- KPI row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-value">343.3K</div>
+      <div class="kpi-label">Total Spend <span class="info">i</span></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">166.0K</div>
+      <div class="kpi-label">Supply Chain Benefit <span class="info">i</span></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">1458.45</div>
+      <div class="kpi-label">Discounts Earned <span class="info">i</span></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">12</div>
+      <div class="kpi-label">Supplier Count <span class="info">i</span></div>
+    </div>
+  </div>
+
+  <!-- Charts row -->
+  <div class="charts-row">
+    <div class="chart-card">
+      <div class="chart-title">Spend Funnel <span class="info">i</span></div>
+      <div class="funnel">
+        <div style="font-size:11px;color:#777;margin-bottom:8px;">Total: 343,318 (100%)</div>
+        <div class="funnel-bar" style="width:100%;">343,318</div>
+        <div class="funnel-bar" style="width:82%;background:#4a8bc4;">281,521</div>
+        <div class="funnel-bar" style="width:64%;background:#3a7ab4;">219,724</div>
+        <div class="funnel-bar" style="width:48%;background:#2a6aa4;">164,793</div>
+        <div class="funnel-bar" style="width:34%;background:#1a5a94;">116,728</div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Monthly Spend Breakdown <span class="info">i</span></div>
+      <div class="bar-chart">
+        <div class="bar-chart-y">
+          <span>300K</span>
+          <span>200K</span>
+          <span>150K</span>
+          <span>100K</span>
+          <span>0</span>
+        </div>
+        <div class="bar-wrap"><div class="bar" style="height:40%;"></div><div class="bl">Oct</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:55%;"></div><div class="bl">Nov</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:35%;"></div><div class="bl">Dec</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:70%;"></div><div class="bl">Jan</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:90%;background:#1a2b45;"></div><div class="bl">Feb</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:60%;"></div><div class="bl">Mar</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     PAYABLES PAGE
+     ══════════════════════════════════ -->
+<div class="page" id="page-payables" style="padding:0;">
+
+  <div style="background:#e4e4e4;padding:10px 20px 8px 20px;display:flex;align-items:center;gap:8px;">
+    <span style="font-size:20px;font-weight:400;color:#333;">Payables</span>
+    <span style="font-size:14px;color:#777;cursor:pointer;">▾</span>
+  </div>
+
+  <!-- Confirmation banner (hidden) -->
+  <div class="conf-banner" id="conf-banner" style="margin:12px 16px 0 16px;">
+    <div class="conf-check">✓</div>
+    <div>
+      <div class="conf-title">Settlement Processed Successfully</div>
+      <div class="conf-ref">Reference: <strong>STL-2026-0318-VC0298</strong> · Reconciliation ref logged to DLA Madrid ERP</div>
+      <div class="conf-meta">
+        <span>Supplier: <strong>Indra Sistemas S.A.</strong></span>
+        <span>Amount: <strong>€14,000.00</strong></span>
+        <span>Method: <strong>Taulia VCN</strong></span>
+        <span>Date: <strong>18 Mar 2026</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:14px 16px 20px 16px;">
+    <div class="outer-wrap">
+
+      <!-- Supplier portal header -->
+      <div class="supplier-hdr">
+        <div class="sap-taulia-logo">
+          <span class="logo-sap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 28" width="42" height="28" style="display:block;"><defs><linearGradient id="sg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00adef"/><stop offset="100%" stop-color="#0070c0"/></linearGradient></defs><rect width="42" height="28" fill="url(#sg2)"/><polygon points="25,28 42,4 42,28" fill="white"/><text x="3" y="21" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="900" fill="white" letter-spacing="-0.3">SAP</text></svg></span>
+          <span class="logo-taulia">Taulia</span>
+          <span style="font-size:12px;color:#888;margin-left:14px;padding-left:14px;border-left:1px solid #ddd;">Powered by <span style="color:#db0011;font-weight:700;">HSBC</span></span>
+        </div>
+        <nav class="sup-nav">
+          <a>Home</a>
+          <a class="active-link">Invoices</a>
+          <a>Payments</a>
+          <a>Cash Planner</a>
+          <a>Cashflow™</a>
+          <a>My Details</a>
+          <a>Custom FAQs</a>
+        </nav>
+      </div>
 
       <!-- Entity bar -->
       <div class="entity-bar">
